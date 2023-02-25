@@ -34,6 +34,25 @@ export default function App() {
     }
   };
 
+  const filterByAlive = () => {
+    url.includes('&')
+      ? setUrl(url.substr(0, url.indexOf('&')) + '&status=alive')
+      : setUrl(url + '&status=alive');
+  };
+  const filterByDead = () => {
+    url.includes('&')
+      ? setUrl(url.substr(0, url.indexOf('&')) + '&status=dead')
+      : setUrl(url + '&status=dead');
+  };
+  const filterByUnknow = () => {
+    url.includes('&')
+      ? setUrl(url.substr(0, url.indexOf('&')) + '&status=unknow')
+      : setUrl(url + '&status=unknow');
+  };
+
+  const clearFilter = () => {
+    url.includes('&') ? setUrl(url.substr(0, url.indexOf('&'))) : null;
+  };
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -63,16 +82,22 @@ export default function App() {
             value={input}
             id="filter"
             type="text"
-            placeholder="Filter"
+            placeholder="Search by name"
           />
           <Search className="search" onClick={search} />
         </div>
-      </header>
-      <main>
+        <aside>
+          <button onClick={filterByAlive}>Alive</button>
+          <button onClick={filterByDead}>Dead</button>
+          <button onClick={filterByUnknow}>Who knows?</button>
+          <button onClick={clearFilter}>Clear filter</button>
+        </aside>
         <p className="resultsCounter">
           Well, we find: {pages.count} of... you know, what you searched! Don't
           ask again.
         </p>
+      </header>
+      <main>
         <ul>
           {data.map((resp) => {
             return (
@@ -116,7 +141,17 @@ export default function App() {
             disabled={pages.next == null ? true : false}
           >
             Next page
-          </button>
+          </button>{' '}
+          <div className="credits">
+            <p>
+              This site was made in react. API used:{' '}
+              <a href="https://rickandmortyapi.com/">rickandmorty</a>
+            </p>
+            <p>
+              Find me in my GitHub:{' '}
+              <a href="https://github.com/Casewinter">Casewinter</a>
+            </p>
+          </div>
         </footer>
       </main>
     </div>

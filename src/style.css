@@ -85,10 +85,12 @@ main {
   margin: 3.2rem auto;
 }
 
+aside {
+  padding: 10px;
+}
 .resultsCounter {
   text-align: center;
   color: white;
-  margin: 10px;
 }
 ul {
   display: grid;
@@ -161,7 +163,15 @@ footer span {
   margin: 1px;
 }
 
-footer button {
+footer .credits {
+  margin: 10px;
+  font-size: 1.4rem;
+}
+footer a {
+  text-decoration: none;
+  color: #adadb4;
+}
+button {
   background-color: var(--primary-400);
   border: none;
   color: #121213;
