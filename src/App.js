@@ -13,7 +13,6 @@ export default function App() {
   );
 
   const baseUrl = 'https://rickandmortyapi.com/api';
-  document.title = 'Rick And Morty';
   useEffect(() => {
     fetch(url)
       .then((resp) => resp.json())
